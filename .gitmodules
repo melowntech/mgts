@@ -1,0 +1,6 @@
+[submodule "externals/buildsys/common"]
+	path = externals/buildsys/common
+	url = https://github.com/melowntech/buildsys-common
+[submodule "mgts/libgts"]
+	path = mgts/libgts
+	url = https://github.com/melowntech/libgts

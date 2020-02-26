@@ -1,0 +1,12 @@
+libmgts-dev.links
+tmp
+libmgts-0.7-5
+libmgts-bin
+libmgts-dbg
+libmgts-dev
+*.debhelper*
+*.substvars
+autoreconf.*
+debhelper-build-stamp
+files
+control

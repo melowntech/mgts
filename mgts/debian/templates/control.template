@@ -1,0 +1,68 @@
+Source: mgts
+Section: math
+Priority: optional
+Maintainer: Vaclav Blazek <vaclav.blazek@melowntech.com>
+Build-Depends: debhelper (>= 9), dh-autoreconf, libglib2.0-dev
+               , patchelf (>= 0.10)
+Standards-Version: 3.9.5
+Homepage: https://github.com/melowntech/mgts
+
+Package: libmgts-0.7-5
+Architecture: any
+Multi-Arch: same
+Section: devel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Recommends: libmgts-bin
+Replaces: libmgts-0.7-1, libmgts-dev (<< ${binary:Version})
+Description: library to deal with 3D computational surface meshes
+ The GNU Triangulated Surface Library is intended to provide a simple and
+ efficient library to scientists dealing with 3D surfaces meshed with
+ interconnected triangles.
+ .
+ This package contains the shared libraries.
+ .
+ Repackaged fixed version by Melown not to collide with system provided library.
+
+Package: libmgts-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: ${misc:Depends}, libglib2.0-dev, libmgts-0.7-5 (= ${binary:Version})
+Suggests: libmgts-doc
+Replaces: libmgts-0.7-1
+Description: development files for libmgts
+ The GTS Library is intended to provide a set of useful functions to
+ deal with 3D surfaces meshed with interconnected triangles.
+ .
+ This package contains the headers and development libraries needed to
+ build applications using GTS.
+ .
+ Repackaged fixed version by Melown not to collide with system provided library.
+
+Package: libmgts-dbg
+Priority: extra
+Architecture: any
+Multi-Arch: same
+Section: debug
+Depends: ${misc:Depends}, libmgts-0.7-5 (= ${binary:Version})
+Description: debugging symbols for libmgts
+ The GTS Library is intended to provide a set of useful functions to
+ deal with 3D surfaces meshed with interconnected triangles.
+ .
+ This package contains the debugging symbols for GTS.
+ .
+ Repackaged fixed version by Melown not to collide with system provided library.
+
+Package: libmgts-bin
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmgts-0.7-5 (= ${binary:Version})
+Replaces: libmgts-0.7-1, libmgts-dev (<< ${binary:Version})
+Description: utility binaries for libmgts
+ The GTS Library is intended to provide a set of useful functions to
+ deal with 3D surfaces meshed with interconnected triangles.
+ .
+ This package contains some utility binaries.
+ .
+ Repackaged fixed version by Melown not to collide with system provided library.

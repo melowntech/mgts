@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+# include common debian support
+include buildsys/common/include/debian.mk
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@ --with autoreconf -Dlibgts
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f libgts/src/predicates_init libgts/test/boolean/errors
+
+override_dh_auto_configure:
+	dh_auto_configure
+	sed 's/@DEB_HOST_MULTIARCH@/$(DEB_HOST_MULTIARCH)/g' \
+		debian/libmgts-dev.links.in > debian/libmgts-dev.links
+
+override_dh_auto_test:
+	find libgts/test/ -name '*.sh' -exec chmod +x {} +
+	dh_auto_test
+
+override_dh_auto_install:
+	dh_auto_install
+	for file in debian/tmp/usr/lib/*/*.la; do \
+		sed -i "/dependency_libs/ s/'.*'/''/" $$file ; \
+	done
+	debian/gts2mgts.sh
+
+override_dh_installchangelogs:
+	dh_installchangelogs libgts/ChangeLog
+
+override_dh_strip:
+	dh_strip -p libmgts-0.7-5 --dbg-package=libmgts-dbg
+	dh_strip -s --remaining-packages
