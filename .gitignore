@@ -2,3 +2,4 @@
 *.ddeb
 *.buildinfo
 *.changes
+*.upload
