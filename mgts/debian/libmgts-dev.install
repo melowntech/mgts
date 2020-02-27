@@ -2,3 +2,5 @@
 /usr/lib/*/lib*.a
 /usr/lib/*/lib*.so
 /usr/lib/*/pkgconfig/*
+
+debian/FindMGTS.cmake /usr/share/cmake/mgts

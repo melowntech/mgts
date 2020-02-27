@@ -50,11 +50,13 @@ sed -i 's/gtsconfig.h/mgtsconfig.h/g' ${root}/usr/include/mgts.h
 old_lib=$(find ${libdir} -name ${old_dlname})
 
 old_pkgconfig=$(find ${root} -name gts.pc)
+old_aclocal=$(find ${root} -name gts.m4)
 
 sed -i -e 's/gts/mgts/g' -e 's/GTS/MGTS/g' \
     debian/tmp/usr/bin/mgts-config \
     ${libdir}/libgts.la \
-    ${old_pkgconfig}
+    ${old_pkgconfig} \
+    ${old_aclocal}
 
 fix_soname ${old_lib}
 
@@ -63,3 +65,4 @@ for file in ${libdir}/*gts*; do
 done
 
 fix_filename ${old_pkgconfig}
+fix_filename ${old_aclocal}
