@@ -1,3 +1,9 @@
+mgts (0.7.6+1) unstable; urgency=medium
+
+  * Fixed symlink
+
+ -- Vaclav Blazek <vaclav.blazek@melown.com>  Thu, 27 Feb 2020 11:55:26 +0100
+
 mgts (0.7.6+0) unstable; urgency=medium
 
   * MGTS build
