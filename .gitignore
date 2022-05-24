@@ -3,3 +3,5 @@
 *.buildinfo
 *.changes
 *.upload
+*.dsc
+*.tar.*

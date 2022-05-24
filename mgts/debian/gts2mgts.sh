@@ -8,12 +8,10 @@ old_dlname=$(grep dlname ${libdir}/libgts.la | cut -d"'" -f2)
 dlname=$(echo ${old_dlname} | sed 's/gts/mgts/g')
 
 function fix_dt_needed() {
-    echo "fixing DT_NEEDED in $1"
     patchelf --replace-needed ${old_dlname} ${dlname} ${1}
 }
 
 function fix_soname() {
-    echo "fixing DT_SONAME in $1"
     patchelf --set-soname ${dlname} ${1}
 }
 
@@ -24,7 +22,8 @@ function fix_filename() {
         dst=$(dirname ${file})/mgts-$(basename ${file})
     fi
     mv $file $dst
-    if file -i ${dst} | grep -q application/x-sharedlib; then
+    if file -i ${dst} | grep -q -E 'sharedlib|executable'; then
+        echo HERE
         fix_dt_needed $dst
     fi
 
